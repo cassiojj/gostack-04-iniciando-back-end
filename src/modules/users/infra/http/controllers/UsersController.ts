@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
+
 import CreateUserService from '@modules/users/services/CreateUserService';
 
 export default class UsersController {
@@ -14,10 +16,6 @@ export default class UsersController {
       password,
     });
 
-    // Aqui estamos apenas marcando para não exibir o password na criação,
-    // assim com fiz o projeto do portal
-    delete user.password;
-
-    return response.json(user);
+    return response.json(classToClass(user));
   }
 }

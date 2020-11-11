@@ -28,14 +28,13 @@ class User {
   avatar: string;
 
   @CreateDateColumn()
-  // eslint-disable-next-line camelcase
   created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
 
   @Expose({ name: 'avatar_url' })
-  getAvatarURL(): string | null {
+  getAvatarUrl(): string | null {
     if (!this.avatar) {
       return null;
     }
